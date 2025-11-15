@@ -2,6 +2,8 @@
 
 A VSCode extension that allows you to download and open S3 files directly from their S3 URIs.
 
+https://github.com/user-attachments/assets/7d1194a9-82ea-483f-909e-dfbc2a6250eb
+
 ## Available Commands
 
 ### S3: Open File
