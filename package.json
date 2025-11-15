@@ -1,0 +1,107 @@
+{
+  "name": "vscode-s3Downloader",
+  "displayName": "S3 Downloader",
+  "description": "Download and open S3 URIs",
+  "version": "1.0.0",
+  "publisher": "zirkelc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zirkelc/vscode-s3Downloader"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Chris Cook",
+    "url": "https://zirkelc.dev"
+  },
+  "icon": "./icons/s3.png",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "s3Downloader.openFile",
+        "category": "S3",
+        "title": "Open File"
+      },
+      {
+        "command": "s3Downloader.downloadFile",
+        "category": "S3",
+        "title": "Download File"
+      },
+      {
+        "command": "s3Downloader.openSettings",
+        "category": "S3",
+        "title": "Open Settings",
+        "icon": "$(settings-gear)"
+      }
+    ],
+    "configuration": {
+      "title": "S3 Downloader",
+      "properties": {
+        "s3Downloader.downloadLocation": {
+          "type": "string",
+          "enum": [
+            "downloads",
+            "workspace",
+            "temp",
+            "custom"
+          ],
+          "enumDescriptions": [
+            "Use the system Downloads folder",
+            "Use the current workspace root folder (if available)",
+            "Use the system temporary folder",
+            "Use a custom folder path"
+          ],
+          "default": "downloads",
+          "title": "Download location",
+          "description": "Where to save downloaded S3 files"
+        },
+        "s3Downloader.customDownloadPath": {
+          "type": "string",
+          "default": "",
+          "title": "Custom download path",
+          "description": "Absolute path for downloads when 'custom' is selected as download location"
+        },
+        "s3Downloader.alwaysPromptForLocation": {
+          "type": "boolean",
+          "default": false,
+          "title": "Always prompt for location",
+          "description": "Always ask where to save the file before downloading"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "npm run check-types && node esbuild.js ",
+    "check-types": "tsc --noEmit",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "lint": "biome check . --write",
+    "test": "vscode-test",
+    "prepackage": "pnpm run compile -- --production",
+    "package": "pnpm vsce package"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.5",
+    "@types/node": "~24.10.1",
+    "@types/vscode": "^1.74.0",
+    "@vscode/vsce": "^3.7.0",
+    "esbuild": "^0.27.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.932.0",
+    "@aws-sdk/signature-v4-crt": "^3.932.0",
+    "amazon-s3-url": "^1.0.3"
+  },
+  "packageManager": "pnpm@10.18.2",
+  "vsce": {
+    "dependencies": false
+  }
+}
