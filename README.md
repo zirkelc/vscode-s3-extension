@@ -15,6 +15,11 @@ Downloads an S3 file without opening it. Offers options to open the download fol
 ### S3: Open Settings
 Opens the extension settings page where you can configure download locations and behavior.
 
+## Installation
+
+- Install the extension from the VSCode Marketplace: [S3 Downloader](https://marketplace.visualstudio.com/items?itemName=zirkelc.vscode-s3Downloader)
+- Download the VSIX file from the latest release and open the Command Palette > "Extensions: Install from VSIX"
+
 ## Usage
 
 1. Open the Command Palette (`Cmd+Shift+P` on Mac, `Ctrl+Shift+P` on Windows/Linux)
@@ -107,11 +112,6 @@ You can access settings in three ways:
   - macOS/Linux: `/tmp/s3Downloader` or `$TMPDIR/s3Downloader`
 
 - **Custom**: Uses your specified absolute path
-
-## Requirements
-
-- AWS credentials must be configured on your system (via AWS CLI, environment variables, or IAM roles)
-- Read access to the S3 buckets you want to download from
 
 ## AWS Credentials
 
